@@ -1,4 +1,4 @@
-Feature:
+Feature: Retrieve the feeds and compare them
   Scenario: Compare the UDS and Solr feeds
     Given UDS feed exists
     And Solr feed exists
