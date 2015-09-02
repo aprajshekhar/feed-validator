@@ -14,7 +14,7 @@ module Feed
       url = config_reader.url
       @xpath = config_reader.xpath
       @attributes = config_reader.attributes.split(',')
-      super(url)
+      super(url+'/search')
 
     end
 
