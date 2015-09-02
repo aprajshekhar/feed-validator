@@ -1,0 +1,20 @@
+ci:
+  host:
+
+fte:
+  host:
+
+prod:
+  host:
+   uds:
+   solr:
+
+xpath:
+  uds-main:
+  uds-attributes:
+
+jsonpath:
+  solr-keys:
+
+param:
+   solr:
