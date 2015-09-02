@@ -7,14 +7,21 @@ module Feed
   Base class for all the feed readers/validators
 =end
   class Base
-    def initialize(url)
-      @connection = RestClient::Resource.new(url)
+    def initialize(url, ssl=false)
+      if ssl
+        @connection = RestClient::Resource.new(url, :verify_ssl => OpenSSL::SSL::VERIFY_NONE)
+      else
+        @connection = RestClient::Resource.new(url)
+      end
+
     end
 
     def get_feed(params)
 
+      sub_url = params['sub-url'] if params.has_key?('sub-url')
+
       if params.has_key?('query')
-        return @connection['?q='+params['query'] ].get :accept=>params['accept']
+        return @connection[sub_url+'?q='+params['query'] ].get :accept=>params['accept']
       else
         return @connection.get :accept=>params['accept']
       end

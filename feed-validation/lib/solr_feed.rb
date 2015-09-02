@@ -35,7 +35,7 @@ module Feed
       params = Hash.new
       params['accept'] = 'application/vnd.redhat.solr+json'
       params['query'] = @query_param
-
+      params['sub-url'] = '/search'
       response = get_feed(params)
 
       if response.code != 200
