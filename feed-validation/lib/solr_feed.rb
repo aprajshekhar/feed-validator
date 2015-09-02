@@ -33,7 +33,7 @@ module Feed
     private
     def retrieve
       params = Hash.new
-      params['accept'] = 'application/json'
+      params['accept'] = 'application/vnd.redhat.solr+json'
       params['query'] = @query_param
 
       response = get_feed(params)
