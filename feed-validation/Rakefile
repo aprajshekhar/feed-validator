@@ -10,6 +10,8 @@ require 'rake/clean'
 require 'rubygems/package_task'
 require 'rdoc/task'
 require 'rake/testtask'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 spec = Gem::Specification.new do |s|
   s.name = 'feed-validation'
@@ -45,3 +47,7 @@ Rake::TestTask.new do |t|
   t.test_files = FileList['test/**/*.rb']
 end
 
+
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
+end
