@@ -10,6 +10,7 @@ module Feed
 =end
   class SolrFeed < Base
     FEED_TYPE = 'solr'
+    attr_reader :parsed_details
 
     def initialize(environment)
       config_reader = ConfigReader.new(environment, FEED_TYPE)
@@ -20,12 +21,14 @@ module Feed
     end
 
     def parse
+      @parsed_details = Hash.new
       parsed_names = []
       parsed_data = ActiveSupport::JSON.decode(retrieve.body)
       parsed_data['response']['docs'].each do |item|
         name =item['allTitle']
         # p name
         parsed_names << item['allTitle']
+        @parsed_details[name] = item['description']
       end
       return parsed_names
     end

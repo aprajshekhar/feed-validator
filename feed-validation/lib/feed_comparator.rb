@@ -31,4 +31,10 @@ class FeedComparator
   def compare_feeds
     return @uds_names.frequency == @solr_names.frequency
   end
+
+  def description_exists_solr?
+    return @solr_feed.parsed_details.all? do |k, v|
+      !v.nil?
+    end
+  end
 end

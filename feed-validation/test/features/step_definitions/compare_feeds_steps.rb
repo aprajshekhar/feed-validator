@@ -20,3 +20,8 @@ end
 Then(/^All the items in UDS feed should be present in Solr feed$/) do
   feed_comparator.retrieve_uds_feed_names
 end
+
+
+Then(/^All the names in the feed should have corresponding description$/) do
+  true == feed_comparator.description_exists_solr?
+end
