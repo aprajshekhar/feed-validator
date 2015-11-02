@@ -28,7 +28,12 @@ module Feed
     end
 
     def check_status
-      return @connection.get().code
+        begin
+            return @connection.get().code
+        rescue => e
+            p 'error response received: ['+e.response+']'
+            return e.response.code
+        end
     end
 
   end
