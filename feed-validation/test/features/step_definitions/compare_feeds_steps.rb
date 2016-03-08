@@ -1,6 +1,6 @@
 feed_comparator = FeedComparator.new('prod')
 
-And(/^Solr feed exists$/) do
+And(/^Solr feed exists$/) do	
   200 == feed_comparator.check_status('solr')
 end
 
@@ -8,7 +8,7 @@ When(/^I retrieve UDS feed$/) do
   true == feed_comparator.compare_feeds
 end
 
-Given(/^UDS feed exists$/) do
+Given(/^UDS feed exists$/) do	
   200 == feed_comparator.check_status('uds')
 end
 

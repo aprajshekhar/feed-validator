@@ -17,7 +17,7 @@ module Feed
       url = config_reader.url
       @keys = config_reader.keys
       @query_param = config_reader.query_param
-      super(url)
+      super(url, true)
     end
 
     def parse

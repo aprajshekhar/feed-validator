@@ -31,8 +31,14 @@ module Feed
         begin
             return @connection.get().code
         rescue => e
-            p 'error response received: ['+e.response+']'
-            return e.response.code
+            p 'error response received: '
+            p e
+            if e.respond_to? :response and e.response.respond_to? :code
+              return e.response.code
+            else
+              return 500
+            end
+              
         end
     end
 
